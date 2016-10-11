@@ -27,7 +27,7 @@ public class Main {
 		 
 		 List<Term> listOfTerm = bruteAutoComplete.getListOfTerm();
 		
-		  System.out.println(listOfTerm);
+		  //System.out.println(listOfTerm);
 		  
 		    /*Collection<Term> terms = QuickAutoComplete.getTerms();
 		    System.out.println(terms);*/
@@ -38,9 +38,9 @@ public class Main {
 		    System.out.println("how many");
 		    int k = input.nextInt();
 		    
-		System.out.println(bruteAutoComplete.weightOf(s));
+		//System.out.println(bruteAutoComplete.weightOf(s));
 		System.out.println(bruteAutoComplete.matches(s, k));
-	  
+	  System.out.println(best);
 	}
 
 

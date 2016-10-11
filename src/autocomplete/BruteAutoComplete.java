@@ -10,6 +10,7 @@ import java.util.*;
 public class BruteAutoComplete implements AutoComplete {
 	
 	List<Term> listOfTerm = new ArrayList<>();
+	
 
 	
 	
@@ -18,41 +19,22 @@ public class BruteAutoComplete implements AutoComplete {
 		
 		
 		 Scanner inUsers = new Scanner(usersFile);
-		  
-		 
-		
-		  
-		  String delims = "[ 	]";//each field in the file is separated(delimited) by a space.
-		  while (inUsers.hasNextLine()) {
+		 String delims = "[ 	]";//each field in the file is separated(delimited) by a space.
+		 while (inUsers.hasNextLine()) {
 		    // get user and rating from data source
 		    String userDetails = inUsers.nextLine();
-		    
-		  System.out.println("Stuff: "+userDetails+".");
-		    
 		    userDetails=userDetails.trim();
-		    // parse user details string
 		    
+		    // parse user details string
 		    String[] userTokens = userDetails.split(delims);
 		    
 		    //create Term
-		  
-		    
-		 
+		    Term list = new Term(Double.parseDouble(userTokens[0]), userTokens[1]);
 		   
-		    
-		    
-		   Term list = new Term(Double.parseDouble(userTokens[0]), userTokens[1]);
-		    //create an array of type Term
-		    
-		    // output user data to console.
-		    
 		    if (userTokens.length == 2) {
-		    	
 		    	listOfTerm.add(list);
 		    	
-		      
-		      
-		    }else
+		   }else
 		    {
 		      inUsers.close();
 		      throw new Exception("Invalid member length: "+ userTokens.length);
@@ -68,18 +50,6 @@ public class BruteAutoComplete implements AutoComplete {
 
 		   
 		 
-		  
-	
-
-  /*  public List<String> getListOfTerms()
-    {
-    	return listOfTerms;
-    }
-    
-    public List<Integer> getListOfWeights()
-    {
-    	return listOfWeights;
-    }*/
 	 public List<Term> getListOfTerm()
 	    {
 	    	return listOfTerm;
@@ -108,28 +78,48 @@ public class BruteAutoComplete implements AutoComplete {
 		
 	@Override
 	public Iterable<String> matches(String prefix, int k) {
-		List<String> subTerms = new ArrayList<>();
-		int count =-1;
+		List<Term> subTerms = new ArrayList<>();
+		List<String> sorted = new ArrayList<>();
+		int count = 1;
 		if (prefix != null) {
+			
+			
+			
 			for (Term t : listOfTerm) {
-				count++;
+				
 				//t.getTerm().indexOf(prefix);
-				if (t.getTerm().toLowerCase().contains(prefix.toLowerCase()) && count <= k)
-					subTerms.add(t.getTerm());
-					
+				//Arrays.asList(listOfTerm).indexOf(prefix) ==0 ;
+				if (t.getTerm().toLowerCase().startsWith(prefix.toLowerCase()))
+					subTerms.add(t);
 			}
+			Collections.sort(subTerms);
+			
+			System.out.println(subTerms);
+			
+			 for (Term t : subTerms) {
+				 
+		            if(count <= k){
+		            	sorted.add(t.getTerm());
+		            }
+		            count++;
+		            }
 		}
 		
-		return subTerms;
+		return sorted;
 
 	}
 
-	@Override
+	
+	 // help Martin
+	@Override  
 	public String bestMatch(String prefix) {
-		// TODO Auto-generated method stub
-		return null;
+		 Iterator<String> itr = matches(prefix, 1).iterator();
+		 String bestmatch = itr.next(); 
+		return      bestmatch;}
 	}
+		
+		
 
 
 
-}
+

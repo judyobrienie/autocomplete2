@@ -61,18 +61,21 @@ public class BruteAutoComplete implements AutoComplete {
 	public double weightOf(String term) {
 			int index = 0;
 			double weight = 0;
-			if (term != null) {
-				for (Term s : listOfTerm) {
-					if (s.getTerm().toLowerCase().equals(term.toLowerCase()))
+			boolean found = false;
+			//if (term != null) {
+				for(Term t: listOfTerm){
 					index++;
-				    weight = listOfTerm.get(index).getWeight();}
-					
-					}
-				
-			
-				return weight;
-		}
-			
+				    if (t.getTerm().toLowerCase().equals(term.toLowerCase())){
+				    	found = true;
+				    	break;
+				    
+				    }
+				   	 weight = listOfTerm.get(index).getWeight();
+				    }
+				//}
+			return weight;
+			}
+				    	
 		
 		
 		
@@ -94,7 +97,7 @@ public class BruteAutoComplete implements AutoComplete {
 			}
 			Collections.sort(subTerms);
 			
-			System.out.println(subTerms);
+			//System.out.println(subTerms);
 			
 			 for (Term t : subTerms) {
 				 
@@ -111,12 +114,25 @@ public class BruteAutoComplete implements AutoComplete {
 
 	
 	 // help Martin
-	@Override  
+	
 	public String bestMatch(String prefix) {
+		String bestmatch = null;
+		try{
 		 Iterator<String> itr = matches(prefix, 1).iterator();
-		 String bestmatch = itr.next(); 
-		return      bestmatch;}
+		 bestmatch = itr.next(); 
+		}
+		catch (Exception e){ 
+			System.out.println("There are no matching terms: " + e);
+		}
+		 
+		return      bestmatch;
+		
 	}
+	
+	
+	
+	
+	}//end
 		
 		
 

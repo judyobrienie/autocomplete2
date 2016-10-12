@@ -22,8 +22,9 @@ public class BruteAutoCompleteTest {
 	@Test
 	 public  void weightOf()
 		  {
-		    assertEquals (0,term4.weight);
-		    assertEquals (500,term.weight);
+		    assertEquals (0,term4.weight,01);
+		    assertEquals (500,term.weight,01);
+		    
 		    
 		   
 		  }

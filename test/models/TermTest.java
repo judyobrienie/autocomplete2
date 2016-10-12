@@ -6,6 +6,8 @@ import static org.junit.Assert.*;
 import java.util.HashSet;
 import java.util.Set;
 import static models.Fixtures.listOfTerms;
+
+
 import org.junit.After;
 import org.junit.Test;
 
@@ -24,9 +26,9 @@ public class TermTest {
 	 @Test
 	public void testCreate()
 	  {
-	    assertEquals (500,term.weight);
+	    assertEquals (500.0,term.weight,.01);
 	    assertEquals ("shop",term.term);
-	    assertEquals (0,term4.weight);
+	    assertEquals (0.0,term4.weight,.01);
 	   
 	  }
 
@@ -42,10 +44,13 @@ public class TermTest {
 	    }
 	    assertEquals (listOfTerms.length, ids.size());
 	  }
+	  
+	  
+	  
 	  @Test
 	  public void testToString()
 	  {
-	    assertEquals ("Term{" + term.id +", 500, shop}", term.toString());
+	    assertEquals ("Term{" + term.id +", 500.0, shop}", term.toString());
 	  }
 	
 	
@@ -56,17 +61,16 @@ public class TermTest {
   @Test
   public void testEquals()
   {
-    Term term2 = new Term (500, "shop"); 
-    Term term3   = new Term (600, "shops"); 
+    Term term2 = new Term (500.0, "shop"); 
+    Term term3   = new Term (600.0, "shops"); 
 
     assertEquals(term, term);
-    assertEquals(term, term2);
+    assertEquals(term2, term2);
     assertNotEquals(term, term3);
     
     assertSame(term, term);
     assertNotSame(term, term2);
   }  
-
 
 
 

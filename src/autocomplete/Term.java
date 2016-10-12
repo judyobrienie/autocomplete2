@@ -8,6 +8,7 @@ import static com.google.common.base.MoreObjects.toStringHelper;
 
 public class Term  implements Comparable<Term>{
 	
+	
 	public String term;
 	  static int   counter = 0;
 	  public int   id;
@@ -21,7 +22,7 @@ public class Term  implements Comparable<Term>{
 	  public Term(double weight, String term)
 	  {
 	    setWeight(weight);
-	    this.term = term;
+	   setTerm(term);
 	    this.id  = counter++;
 	  }
 	  
@@ -52,7 +53,10 @@ public class Term  implements Comparable<Term>{
 		}
 
 		public void setTerm(String term) {
-			this.term = term;
+			if(term == null){
+				throw new NullPointerException("NO Term");
+			}
+			else this.term = term;
 		} 
 	  
 		

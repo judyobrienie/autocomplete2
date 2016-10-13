@@ -3,7 +3,7 @@ package autocomplete;
 
 
 import java.io.File;
-//import java.text.NumberFormat;
+
 import java.util.*;
 
 
@@ -50,7 +50,14 @@ public class BruteAutoComplete implements AutoComplete {
 
 		   
 		 
-	 public List<Term> getListOfTerm()
+	 public BruteAutoComplete() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+
+	public List<Term> getListOfTerm()
 	    {
 	    	return listOfTerm;
 	    }
@@ -58,24 +65,27 @@ public class BruteAutoComplete implements AutoComplete {
 
 	
 		@Override
-	public double weightOf(String term) {
+	public double weightOf(String term)  {
 			int index = 0;
 			double weight = 0;
-			boolean found = false;
-			//if (term != null) {
+			boolean match = false;
+			
 				for(Term t: listOfTerm){
 					index++;
 				    if (t.getTerm().toLowerCase().equals(term.toLowerCase())){
-				    	found = true;
+				    	match = true;
 				    	break;
-				    
 				    }
-				   	 weight = listOfTerm.get(index).getWeight();
-				    }
-				//}
-			return weight;
+				    weight = listOfTerm.get(index).getWeight();
+				   	
+					}
+				 
+				if(!match){
+				 System.out.println("No Result Found");
+				}
+				return weight;
 			}
-				    	
+			    	
 		
 		
 		
@@ -85,8 +95,6 @@ public class BruteAutoComplete implements AutoComplete {
 		List<String> sorted = new ArrayList<>();
 		int count = 1;
 		if (prefix != null) {
-			
-			
 			
 			for (Term t : listOfTerm) {
 				
@@ -117,14 +125,16 @@ public class BruteAutoComplete implements AutoComplete {
 	
 	public String bestMatch(String prefix) {
 		String bestmatch = null;
+		if (prefix != null) {
 		try{
 		 Iterator<String> itr = matches(prefix, 1).iterator();
 		 bestmatch = itr.next(); 
 		}
 		catch (Exception e){ 
 			System.out.println("There are no matching terms: " + e);
+			}
 		}
-		 
+			 
 		return      bestmatch;
 		
 	}

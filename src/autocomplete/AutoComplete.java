@@ -3,7 +3,7 @@ package autocomplete;
 public interface AutoComplete{
 
     // Returns the weight of the term, or 0.0 if no such term.
-    public double weightOf(String term);
+    public double weightOf(String term) ;
 
     // Returns the highest weighted matching term, or null if no matching term.
     public String bestMatch(String prefix);

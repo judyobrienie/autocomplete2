@@ -3,6 +3,7 @@ package autocomplete;
 
 
 import java.io.File;
+import java.math.BigDecimal;
 import java.util.*;
 
 
@@ -23,7 +24,7 @@ public class Main {
 
 		 int k  = 0;
 		 String s = null;
-		 String t = null;
+		
 	       
 	           System.out.println("Terms Database");
 	           System.out.println("-----------------");
@@ -52,17 +53,17 @@ public class Main {
 		             	   	  }
 		          		    
 		          		 	System.out.println("\nList of Highest Matching Terms that start with your Prefix in Decending Order : " + bruteAutoComplete.matches(s, k));
+		          		 	System.out.println("\nThe Highest Weighted Term is : " + bruteAutoComplete.bestMatch(s));
 		          		 	break;
-		          		 	
-		               case 2:
-		            	   System.out.println("\nThe Highest Weighted Term is : " + bruteAutoComplete.bestMatch(s));
-		                 break;
 		                 
-		               case 3:
+		                 
+		               case 2:
 		            	    System.out.println("What Term would you like the Weight Value of?");
 		            	    input.nextLine();// Swallow bug
 		            	    s = input.nextLine();
 	          		    	System.out.println(bruteAutoComplete.weightOf(s));
+	          		    	/*BigDecimal bd = new BigDecimal(bruteAutoComplete.weightOf(s));
+	          		    	System.out.println(bd.doubleValue());*/ //trying to stop scientific notation
 		            	   break;
 		             
 				       default: System.out.println("Invalid option entered: " + option);
@@ -95,8 +96,7 @@ public class Main {
 	        private static  int mainMenu()
 	        { 
 	          System.out.println("1) Search For A List Of Matching Terms in Decending Weighted Order");
-	          System.out.println("2) Search For the Hightest Weighted Term");
-	          System.out.println("3) Get The Weight of a Term");
+	          System.out.println("2) Get The Weight of a Term");
 	          System.out.println("0) Exit");
 	          System.out.print("==>>");
 	          int option = input.nextInt();

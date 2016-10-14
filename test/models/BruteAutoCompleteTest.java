@@ -17,16 +17,19 @@ import static models.Fixtures.listOfTerms;
 
 
 
+
 public class BruteAutoCompleteTest {
 	
-	private BruteAutoComplete bruteAutoComplete;
-	
+    
+    String An = "An";
+    String hello = "hello";
 	List<Term> listOfTerm = new ArrayList<>();
+	BruteAutoComplete bruteAutoComplete = new BruteAutoComplete(listOfTerm);
 	
 	@Before
 	  public void setup()
 	  {
-	   bruteAutoComplete = new BruteAutoComplete();
+	   
 	    for (Term terms : listOfTerms)
 	    {
 	      listOfTerm.add(terms);
@@ -37,7 +40,7 @@ public class BruteAutoCompleteTest {
 	  public void testlistOfTerm()
 	  {
 	    assertEquals (6,listOfTerm.size());
-	  
+	    
 	  }  
 	
 	
@@ -45,12 +48,22 @@ public class BruteAutoCompleteTest {
 	@Test
 	 public  void testWeightOf()
 		  { 
-		   
-		    String An = null;
-			assertEquals (2000, bruteAutoComplete.weightOf(An),01);
+		   double weight = bruteAutoComplete.weightOf(An);
+			assertEquals (2000, weight,01);
 		
 		    
 		  }
+private void hasItem(String an2, Iterable<String> matches) {
+		
+		
+	}
+	
+	@Test
+	public void Matchs(){
+		hasItem (An, bruteAutoComplete.matches(An, 2) );
+		hasItem(hello, bruteAutoComplete.matches(hello, 1));
+		//System.out.println(bruteAutoComplete.matches(An, 2));
+	}
 	
 	
 	@After

@@ -20,7 +20,7 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		
 		 BruteAutoComplete bruteAutoComplete = new BruteAutoComplete(usersFile);
-		 List<Term> listOfTerm = bruteAutoComplete.getListOfTerm();
+		
 
 		 int k  = 0;
 		 String s = null;
@@ -52,7 +52,7 @@ public class Main {
 		      		      			System.out.println("Enter numbers only not text: " + e);
 		             	   	  }
 		          		    
-		          		 	System.out.println("\nList of Highest Matching Terms that start with your Prefix in Decending Order : " + bruteAutoComplete.matches(s, k));
+		          		 	System.out.println("\nList of Highest Matching Terms that start with your Prefix in Decending Order : " +  "\n\n" + bruteAutoComplete.matches(s, k));
 		          		 	System.out.println("\nThe Highest Weighted Term is : " + bruteAutoComplete.bestMatch(s));
 		          		 	break;
 		                 

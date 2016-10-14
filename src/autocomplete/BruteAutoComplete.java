@@ -12,7 +12,10 @@ public class BruteAutoComplete implements AutoComplete {
 	List<Term> listOfTerm = new ArrayList<>();
 	
 
-	
+	 public BruteAutoComplete(List<Term> listOfTerm ){
+			this.listOfTerm = listOfTerm;
+			
+		}
 	
 	
 	public  BruteAutoComplete(File usersFile) throws Exception {
@@ -49,10 +52,6 @@ public class BruteAutoComplete implements AutoComplete {
 	
 
 		   
-		 
-	 public BruteAutoComplete() {
-		// TODO Auto-generated constructor stub
-	}
 
 
 
@@ -65,26 +64,30 @@ public class BruteAutoComplete implements AutoComplete {
 
 	
 		@Override
-	public double weightOf(String term)  {
+		public double weightOf(String term)  {
 			int index = 0;
 			double weight = 0;
 			boolean match = false;
-			
-				for(Term t: listOfTerm){
-					index++;
-				    if (t.getTerm().toLowerCase().equals(term.toLowerCase())){
-				    	match = true;
-				    	break;
-				    }
-				    weight = listOfTerm.get(index).getWeight();
-				   	
-					}
-				 
-				if(!match){
-				 System.out.println("No Result Found");
+
+			for(Term t: listOfTerm){
+				
+				if (t.getTerm().toLowerCase().equals(term.toLowerCase())){
+					match = true;
+					
+				
+				weight = listOfTerm.get(index).getWeight();
+				break;
 				}
-				return weight;
+				index++;
 			}
+
+			if(!match){
+				System.out.println("No Result Found");
+				weight = 0;
+			}
+
+			return weight;
+		}
 			    	
 		
 		

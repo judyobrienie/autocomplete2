@@ -9,6 +9,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.google.common.collect.Iterables;
+
 import autocomplete.BruteAutoComplete;
 import autocomplete.Term;
 import static models.Fixtures.listOfTerms;
@@ -19,53 +21,49 @@ import static models.Fixtures.listOfTerms;
 
 
 public class BruteAutoCompleteTest {
-	
-    
-    String An = "An";
-    String hello = "hello";
+
+
+	String An = "An";
+	String hello = "hello";
 	List<Term> listOfTerm = new ArrayList<>();
 	BruteAutoComplete bruteAutoComplete = new BruteAutoComplete(listOfTerm);
-	
+
 	@Before
-	  public void setup()
-	  {
-	   
-	    for (Term terms : listOfTerms)
-	    {
-	      listOfTerm.add(terms);
-	    }
-	    
-	  }
-	@Test
-	  public void testlistOfTerm()
-	  {
-	    assertEquals (6,listOfTerm.size());
-	    
-	  }  
-	
-	
-	
-	@Test
-	 public  void testWeightOf()
-		  { 
-		   double weight = bruteAutoComplete.weightOf(An);
-			assertEquals (2000, weight,01);
-		
-		    
-		  }
-private void hasItem(String an2, Iterable<String> matches) {
-		
-		
+	public void setup()
+	{
+
+		for (Term terms : listOfTerms)
+		{
+			listOfTerm.add(terms);
+		}
+
 	}
+	@Test
+	public void testlistOfTerm()
+	{
+		assertEquals (5,listOfTerm.size());
+
+	}  
+
+
+
+	@Test
+	public  void testWeightOf()
+	{ 
+		double weight = bruteAutoComplete.weightOf(An);
+		assertEquals (2000, weight,01);
+	}
+
 	
+
 	@Test
 	public void Matchs(){
-		hasItem (An, bruteAutoComplete.matches(An, 2) );
-		hasItem(hello, bruteAutoComplete.matches(hello, 1));
-		//System.out.println(bruteAutoComplete.matches(An, 2));
+		Iterable<String>it = bruteAutoComplete.matches(An, 2);
+		assertEquals (2,  Iterables.size(it));
+		
 	}
-	
-	
+
+
 	@After
 	public void tearDown() throws Exception {
 	}

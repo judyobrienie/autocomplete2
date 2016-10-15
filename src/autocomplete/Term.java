@@ -8,6 +8,10 @@ import java.util.Objects;
 
 
 
+/**
+ * @author Judy
+ *
+ */
 public class Term  implements Comparable<Term>{
 
 

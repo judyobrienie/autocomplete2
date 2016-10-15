@@ -2,6 +2,11 @@ package models;
 
 import autocomplete.Term;
 
+/**
+ * @author Judy
+ * @param listOfTerms Array Of Terms
+ * @return an array of Terms to for junit testing
+ */
 public class Fixtures
 {
   public static Term[] listOfTerms =

@@ -24,20 +24,22 @@ public class BruteAutoCompleteTest {
 
 
 	String An = "An";
+	String A = "A";
 	String hello = "hello";
 	List<Term> listOfTerm = new ArrayList<>();
+	
 	BruteAutoComplete bruteAutoComplete = new BruteAutoComplete(listOfTerm);
 
 	@Before
-	public void setup()
-	{
+	public void setup(){
 
 		for (Term terms : listOfTerms)
 		{
 			listOfTerm.add(terms);
 		}
-
 	}
+		  
+		  
 	@Test
 	public void testlistOfTerm()
 	{
@@ -53,16 +55,24 @@ public class BruteAutoCompleteTest {
 		double weight = bruteAutoComplete.weightOf(An);
 		assertEquals (2000, weight,01);
 	}
-
+	
+	@Test
+	public void matches()
+	{
+		Iterable<String>it = bruteAutoComplete.matches(An,2);
+				assertEquals(2,Iterables.size(it));
+		
+	}
 	
 
 	@Test
-	public void Matchs(){
-		Iterable<String>it = bruteAutoComplete.matches(An, 2);
-		assertEquals (2,  Iterables.size(it));
+	public void bestMatch(){
+		String bestMatch = bruteAutoComplete.bestMatch(A);
+		assertEquals (An,  bestMatch);
 		
 	}
 
+	
 
 	@After
 	public void tearDown() throws Exception {

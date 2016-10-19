@@ -1,3 +1,15 @@
+
+/**
+ * This is the main class that uses console i/o to interact with the user.  
+ * It creates either an instance of BruteAutoComplete to run or QuickAutoComplete to run
+ * 
+ * 
+ * Known Bugs:  Not checking for duplicates
+ * 
+ * @author Judy O'Brien
+ * @version 1
+ */
+
 package autocomplete;
 
 
@@ -6,22 +18,36 @@ import java.io.File;
 import java.math.BigDecimal;
 import java.util.*;
 
+import edu.princeton.cs.introcs.Stopwatch;
 
 
 
 
+/**
+ * Creates a new scanner for i/o
+ * @param a new File called usersFile
+ * @returns an array constructed from usersFile
+ * @
+ */
 
 
 public class Main {
 
 	private static Scanner input = new Scanner(System.in);
 	public static final File usersFile = new File("../autocomplete2/lib/test.txt");
+	
+	/**
+	 * Runs the program using i/o from user
+	 * Two Options  1. Run BruteAutoComplete
+	 * 				2. Run quickAutoComplete
+	 */
 
+	
 	public static void main(String[] args) throws Exception {
 
 		BruteAutoComplete bruteAutoComplete = new BruteAutoComplete(usersFile);
-
-
+		//QuickAutoComplete quickAutoComplete = new QuickAutoComplete(usersFile);
+       
 		int k  = 0;
 		String s = null;
 
@@ -51,9 +77,16 @@ public class Main {
 						{
 							System.err.println("Enter numbers only not text: " + e);
 						}
-
+						Stopwatch    stopwatch = new Stopwatch();
+						
 						System.out.println("\nList of Highest Matching Terms that start with your Prefix in Decending Order : " +  "\n\n" + bruteAutoComplete.matches(s, k));
 						System.out.println("\nThe Highest Weighted Term is : " + bruteAutoComplete.bestMatch(s));
+						 
+						//System.out.println("\nList of Highest Matching Terms that start with your Prefix in Decending Order : " +  "\n\n" + quickAutoComplete.matches(s, k));
+						//System.out.println("\nThe Highest Weighted Term is : " + quickAutoComplete.bestMatch(s));
+						
+				        double    time = stopwatch.elapsedTime(); 
+				        System.out.println("elapsed    time " + time);
 						break;
 
 
@@ -64,6 +97,10 @@ public class Main {
 						
 						BigDecimal bd = new BigDecimal(bruteAutoComplete.weightOf(s));
 						System.out.println(bd);
+						
+						//BigDecimal bd = new BigDecimal(quickAutoComplete.weightOf(s));
+						//System.out.println(bd);
+						
 						break;
 
 					default: System.err.println("Invalid option entered: " + option);

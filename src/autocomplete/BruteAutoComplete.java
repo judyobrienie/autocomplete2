@@ -7,17 +7,38 @@ import java.io.File;
 import java.util.*;
 
 
+
+/**
+ * @author Judy
+ * @param BruteAutoCompletet that implements give Interface AutoComplete
+ * @returns populated Array of type Terms
+ * @returns weight of any given Term
+ * @bestMatch hightest matching weighted Term
+ * @matches itereble string of matching term in decending order of weight
+ */
 public class BruteAutoComplete implements AutoComplete {
 
-	List<Term> listOfTerm = new ArrayList<>();
-
 	
+	/**
+	 * creates arraylist of type Term
+	 */
+	List<Term> listOfTerm = new ArrayList<>();
+	
+	
+
+	/**
+	 * @param Constructor to take array list  of Type term for test class BruteAutoCompleteTest
+	 */
 	public BruteAutoComplete(List<Term> listOfTerm ){
 		this.listOfTerm = listOfTerm;
-
 	}
-
-
+	
+	
+	/**
+	 * @param Construcor to read in a File 
+	 * @returns a populated array list of type Term
+	 */
+	
 	public  BruteAutoComplete(File usersFile) throws Exception {
 
 
@@ -40,6 +61,11 @@ public class BruteAutoComplete implements AutoComplete {
 		}
 	
 
+
+	/**
+	 *@param weightOf The weight of a Term
+	 *@return the weight of the term, or 0.0 if no such term.
+	 */
 
 	@Override
 	public double weightOf(String term)  {
@@ -68,7 +94,13 @@ public class BruteAutoComplete implements AutoComplete {
 	}
 
 
-
+	/**
+	 *@param matches An Iterable String of Terms
+	 *@return  the highest weighted k matching terms (in descending order of weight), as an
+     * iterable.
+     * If fewer than k matches, return all matching terms (in descending order
+     * of weight).
+	 */
 
 	@Override
 	public Iterable<String> matches(String prefix, int k) {
@@ -107,8 +139,12 @@ public class BruteAutoComplete implements AutoComplete {
 	}
 
 
-	// help Martin
+	/**
+	 *@param bestMatch The highest weighted Term
+	 *@return Returns the highest weighted matching term, or null if no matching term.
+	 */
 
+	
 	public String bestMatch(String prefix) {
 		String bestmatch = null;
 		if (prefix != null) {

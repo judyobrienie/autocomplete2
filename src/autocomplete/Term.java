@@ -9,20 +9,31 @@ import java.util.Objects;
 
 /**
  * @author Judy
- *
+ * @param A Term Class which implements java Comparable Interface so that Terms can be compared against each other
+ * @returns a name of term
+ * @returns a weight of a term
+ * @returns an id for each term
  */
 public class Term  implements Comparable<Term>{
 
-
+	public double weight;
 	public String term;
 	static int   counter = 0;
 	public int   id;
 
 
 
+	/** Default Constructor for objects of class Term. 
+     */
 	public Term()
 	{
 	}
+	
+	/** Constructor for objects of class Term. 
+     * @param weight    The weight of the Term
+     * @param term      The  Name of the Term
+     * @return an individual id for each term
+     */
 
 	public Term(double weight, String term)
 	{
@@ -32,7 +43,10 @@ public class Term  implements Comparable<Term>{
 	}
 
 
-
+	/**
+     * Builds a String representing a user friendly representation of the object state
+     * @return Details of the Term
+     */
 	@Override
 	public String toString()
 	{
@@ -42,10 +56,23 @@ public class Term  implements Comparable<Term>{
 				.toString();
 	}
 
+	
+
+	/**
+     * Getters and Setters
+     */
+ 
+	/**
+	  * @return weight of Term
+	  */ 
 	public double getWeight() {
 		return weight;
 	}
 
+	
+	/**
+	  * @return weight of Term but sets to 0.00 if a minus
+	  */ 
 	public void setWeight(double weight) {
 		if( weight >= 0){
 			this.weight = weight;
@@ -54,14 +81,26 @@ public class Term  implements Comparable<Term>{
 		//throw new IllegalArgumentException("Weight Set to Zero");
 	}
 
+	
+	/**
+	  * @return term name
+	  */ 
 	public String getTerm() {
 		return term;
 	}
 
+	
+	/**
+	  * @return null value if term does not exist
+	  */ 
 	public void setTerm(String term) {
 		this.term = Objects.requireNonNull(term);
 	}
 
+	
+	/**
+	  * @returns the weights in decending order
+	  */ 
 
 	@Override
 	public int compareTo(Term that) {
@@ -71,8 +110,9 @@ public class Term  implements Comparable<Term>{
 	} 
 
 
-
-	public double weight;
+	/**
+	* @return maps the memory address to an integer value.
+	*/
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -85,6 +125,10 @@ public class Term  implements Comparable<Term>{
 		return result;
 	}
 
+	/**@param used to make equal comparison between two objects. 
+	 * 
+	 */
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

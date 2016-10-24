@@ -26,6 +26,7 @@ public class BruteAutoCompleteTest {
 
 	String An = "An";
 	String A = "A";
+	String Box = "Box";
 	String hello = "hello";
 	List<Term> listOfTerm = new ArrayList<>();
 	
@@ -72,6 +73,7 @@ public class BruteAutoCompleteTest {
 		
 	}
 	
+
 	/**
 	 * 4. Method to check that is is returning the correct size of iterable string 
 	 *

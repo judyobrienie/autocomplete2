@@ -2,6 +2,8 @@ package autocomplete;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -113,18 +115,31 @@ import java.util.Scanner;
 			List<Term> subTerms = new ArrayList<>();
 			List<String> sorted = new ArrayList<>();
 			int count = 1;
+			
+			
 			try{
 			if ((prefix != null) && (k > 0)){
-				for (Term t : listOfTerm) {
 				
-					if (t.getTerm().startsWith(prefix.toLowerCase()))
-						subTerms.add(t);
-				}
+				int startIndex=Collections.binarySearch(listOfTerm, new Term(0, prefix),Comparator.comparing(Term :: getTerm)); 
+				
+				
+				 if (startIndex > 0)
+			        {
+			        
+					 for( int i = startIndex; i < listOfTerm.size(); i++ )
+					    {
+					       if (listOfTerm.get(i).getTerm().toLowerCase().startsWith(prefix.toLowerCase())){
+					        		 subTerms.add(listOfTerm.get(i));}
+					        }
+					 
+			        
+			        }
+				
 				Collections.sort(subTerms);
 
 				for (Term t : subTerms) {
 					if(count <= k){
-					sorted.add(t.getTerm());
+					sorted.add(((Term) t).getTerm());
 					}
 					count++;
 					}
@@ -140,6 +155,8 @@ import java.util.Scanner;
 			return sorted;
 
 		}
+
+
 
 
 		/**
@@ -163,7 +180,8 @@ import java.util.Scanner;
 
 		}
 
-
+		
+	
 
 
 	}//end

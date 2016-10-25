@@ -82,6 +82,7 @@ public class Term  implements Comparable<Term>{
 	}
 
 	
+	
 	/**
 	  * @return term name
 	  */ 
@@ -92,6 +93,9 @@ public class Term  implements Comparable<Term>{
 	
 	/**
 	  * @return null value if term does not exist
+	  * Checks that the specified object reference is not null.
+	  *  Throws:
+		NullPointerException - if obj is null
 	  */ 
 	public void setTerm(String term) {
 		this.term = Objects.requireNonNull(term);

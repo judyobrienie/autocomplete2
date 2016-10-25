@@ -12,7 +12,8 @@ import java.util.Scanner;
 
 /**
  * @author Judy
- * @param QuickAutoCompletet that implements give Interface AutoComplete
+ * @param QuickAutoCompletet that implements given Interface AutoComplete
+ * Implementing a sorted list using Comparator and using binary search to reduce search time.
  * @returns populated Array of type Terms
  * @returns weight of any given Term
  * @bestMatch hightest matching weighted Term
@@ -60,7 +61,8 @@ import java.util.Scanner;
 				if(!listOfTerm.contains(list)) // checking for doubles not working
 					listOfTerm.add(list);
 				   
-				//sorting arraylist using java built in comparator
+				//sorting arraylist using java built in comparator  
+		        // Code from API Comparator<Person> byLastName = Comparator.comparing(Person::getLastName);
 				listOfTerm.sort(Comparator.comparing(Term :: getTerm));
 					
 			}

@@ -81,7 +81,8 @@ public class Main {
 						
 						System.out.println("\nList of Highest Matching Terms that start with your Prefix in Decending Order : " +  "\n\n" + bruteAutoComplete.matches(s, k));
 						System.out.println("\nThe Highest Weighted Term is : " + bruteAutoComplete.bestMatch(s));
-						 /////////// quickAutoComplete Code
+						 
+						/////////// quickAutoComplete Code
 						//System.out.println("\nList of Highest Matching Terms that start with your Prefix in Decending Order : " +  "\n\n" + quickAutoComplete.matches(s, k));
 						//System.out.println("\nThe Highest Weighted Term is : " + quickAutoComplete.bestMatch(s));
 						
@@ -97,7 +98,8 @@ public class Main {
 						
 						BigDecimal bd = new BigDecimal(bruteAutoComplete.weightOf(s));
 						System.out.println(bd);
-						 /////////// quickAutoComplete Code
+						 
+						/////////// quickAutoComplete Code
 						//BigDecimal bd = new BigDecimal(quickAutoComplete.weightOf(s));
 						//System.out.println(bd);
 						

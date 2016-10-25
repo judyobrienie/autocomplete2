@@ -36,7 +36,7 @@ public class TermTest {
 	{
 		assertEquals (500.0,term.weight,.01);
 		assertEquals ("shop",term.term);
-		assertEquals (0.0,term4.weight,.01);
+		assertEquals (0.00,term4.weight,.01);
 
 	}
   

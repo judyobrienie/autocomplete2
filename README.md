@@ -55,3 +55,9 @@ There is no "A" string in my arrayOfTerms and so the next best match is "An"
 Stops all tests that have been created
 
 
+RUNNING TIME
+
+BRUTEAUTOCOMPLETE    test for 10 instances of prefix  = running time 0.027, 0.014, 0.022
+QUICKAUTOCOMPLETE    test for 10 instances of prefix  = running time 0.009, 0.004, 0.006
+
+
